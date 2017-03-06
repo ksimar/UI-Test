@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="myStyling.css">
+  <script src="jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+ </head>
+ <body class="pageBackground">
+
+   <div class="container">
+   	<div class="row">
+   		<image class="col-xs-5 col-sm-5 col-md-2 col-lg-2 image-responsive " id="user-image" src="image.jpg">
+   			<div class ="col-xs-7 col-md-6 col-lg-6">
+   				<div class="row">
+   				  <p class="myFont background gridText one" id="row1Grid2Row1">James Anderson</p>
+   			    </div>
+   			    <div class="row">
+   			    	<div class="col-xs-4 col-md-4 col-ls-4" onClick="hideOrShow()" id="showPerson">
+   			    	 <p class="myFont background-iconsGrid1 gridText one no-gutter glyphicon glyphicon-user" id="personIcon">Show Person Details</p>
+   			        </div>
+   			        <div class="col-xs-4 col-md-4 col-ls-4">
+   			    	 <p class="myFont background-iconsGrid2 gridText one no-gutter glyphicon glyphicon-th" id="Icon2">Contact Person</p>
+   			        </div>
+   			        <div class="col-xs-4 col-md-4 col-ls-4">
+   			    	 <p class="myFont background-iconsGrid3 gridText one no-gutter glyphicon glyphicon-th-list" id="Icon3">Follow</p>
+   			        </div>
+   			    </div>
+   			</div>
+   			<div class= "col-xs-7 col-md-4 col-lg-4">
+   				<div class="row">
+   				  <p class="myFont background gridText" id="row1Grid3Row1">UX, Web Designer</p>
+   				</div>
+   				<div class="row">
+   				  <p class="myFont background gridText" id="row1Grid3Row2">Send Message</p>
+   				</div>
+   			</div>
+   	</div>
+   	<div class="row" id="hideOrShow">
+   		<div class="container background">
+   			<table class="table">
+    			<tbody>
+        			<tr>
+			          <th>Id</th>
+			            <td id="id"></td>			            
+			        </tr>
+			        <tr>
+			          <th>Name</th>
+			            <td id="name"></td>			           
+			        </tr>
+			      <tr>
+			          <th>Description</th>
+			            <td id="description"></td>			            
+			        </tr>
+			        <tr>
+			          <th>Url</th>
+			            <td id="url"></td>			            
+			        </tr>
+			    </tbody>
+			</table>
+   		</div>
+   	</div>
+   </div>
+  
+ </body>
+
+<script>
+      $(document).ajaxStart(function(){
+       // $("#user-image").attr("src","");
+      }).ajaxStop(function(){
+        console.log("Ajax Stopped.")
+      }).ajaxSuccess(function(){
+        console.log("Ajax Success")
+      }).ajaxComplete(function(){
+        console.log("Ajax Completed")
+      });
+
+      $(document).ready(function(){
+       $.ajax({
+          url:"https://public-api.wordpress.com/rest/v1/sites/dotnetask.wordpress.com",
+          success: function(data){
+            console.log(data)
+            $("#id").text(""+data.ID);
+            $("#name").text(""+data.name);
+            $("#description").text(""+data.description);            
+            $("#url").text(""+data.URL);
+          },
+          error: function(){       
+            $("#name").text("User not found");
+          }
+         });
+        });
+ </script>
+ 
+ <script>
+ $("#showPerson").click(function(){
+        $("#hideOrShow").slideDown("slow");
+    });
+ </script>
+
+ </html>

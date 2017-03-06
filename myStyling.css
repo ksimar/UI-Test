@@ -1,0 +1,51 @@
+.myFont {	
+	
+	font-family: Century gothic;
+	font-size: 20px;
+	font-weight: Bold;
+	font-style: italic;
+	color: white;
+}
+
+.background {
+	background-color: #0017ff;
+}
+
+.background-iconsGrid1 {
+	background-color:  rgba(53, 123, 134, 0.51);
+}
+
+.background-iconsGrid2 {
+	background-color: red;
+}
+
+.background-iconsGrid3 {
+	background-color: green;
+}
+
+.gridText {
+	padding-left: 100px;
+}
+
+p.one {
+    outline-style: double;
+    outline-color: blue;
+    outline-width: thick;
+}
+
+.no-gutter [class*="-6"] {
+    padding-left:0;
+}
+
+.details {
+	padding-left: 100px;
+	font-weight: Bold;
+}
+
+#hideOrShow {
+	display: none;
+}
+
+.pageBackground {
+	background-color: rgba(138, 109, 59, 0.76)
+}
